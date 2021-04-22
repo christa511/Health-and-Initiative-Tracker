@@ -26,3 +26,21 @@ def print_initiative(init_list):
 if __name__ == '__main__':
     init_list = get_initiative()
     print_initiative(init_list)
+
+
+while True:
+    for player in init_list:
+        print("It is", player, "'s turn.")
+        turn_action=input("press A to remove health, H to heal, S to skip turn, or L to leave combat. ")
+        if turn_action.lower() == "a":
+            print("you attacked")
+        elif turn_action.lower() == "h":
+            print("you healed")
+        elif turn_action.lower() == "s":
+            print("you skipped your turn")
+        elif turn_action.lower() == "l":
+            init_list.append(player)
+    if init_list == "":
+        break
+    else:
+        pass
