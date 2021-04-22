@@ -5,3 +5,5 @@ The code work pretty well. will need to work on pulling the names for turn order
 added turn functionality, but still need to add the ability to ask for player's health, 
 
 need to also figure out how to get the list appending right, comes up with numbers instead of the names.
+
+just tried to add health tracking, doesn't work like i want it to, will have to tweak it some more
