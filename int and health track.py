@@ -6,7 +6,7 @@ def validate_num_input(user_input):
         except ValueError:
             print("Please enter a valid number. ")
     return num_input
-
+#code for getting initaitive
 def get_initiative():
     print('Welcome to Initiative Tracker!')
     initiative_tracking = {}
@@ -17,9 +17,9 @@ def get_initiative():
         else:
             initiative_tracking[player_initiative] = [player_name]
     return(initiative_tracking)
-
+#code for getting health below
 def get_health():
-    initiative = get_initiative()
+    initiative = init_list
     health_tracking = {}
     for player_name in initiative:
         player_health = validate_num_input('What is {} health? '.format(player_name))
@@ -28,11 +28,11 @@ def get_health():
         else:
             health_tracking[player_health] = [player_name]
     return(health_tracking)
-
+#code for sorting the list in numerical order
 def print_initiative(init_list):
     print('\nYour initiative order is: ')
     for key in sorted (init_list, reverse=True):
-        print('{}: {}'.format(key, ', '.join(init_list[key]))
+        print('{}: {}'.format(key, ', '.join(init_list[key])))
 
 if __name__ == '__main__':
     init_list = get_initiative()
