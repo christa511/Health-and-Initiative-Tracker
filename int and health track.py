@@ -19,8 +19,9 @@ def get_initiative():
     return(initiative_tracking)
 
 def get_health():
+    initiative = get_initiative()
     health_tracking = {}
-    for player_name in initiative_tracking:
+    for player_name in initiative:
         player_health = validate_num_input('What is {} health? '.format(player_name))
         if player_health in health_tracking:
             health_tracking[player_health].append(player_name)
@@ -31,7 +32,7 @@ def get_health():
 def print_initiative(init_list):
     print('\nYour initiative order is: ')
     for key in sorted (init_list, reverse=True):
-        print('{}: {}'.format(key, ', '.join(init_list[key])))
+        print('{}: {}'.format(key, ', '.join(init_list[key]))
 
 if __name__ == '__main__':
     init_list = get_initiative()
