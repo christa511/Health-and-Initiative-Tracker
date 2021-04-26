@@ -1,3 +1,5 @@
+#NEED TO EXPLAIN WHAT THIS IS
+
 def validate_num_input(user_input):
     while True:
         try:
@@ -18,8 +20,8 @@ def get_initiative():
             initiative_tracking[player_initiative] = [player_name]
     return(initiative_tracking)
 #code for getting health below
-def get_health():
-    initiative = init_list
+def get_health(newinit):
+    initiative = newinit
     health_tracking = {}
     for player_name in initiative:
         player_health = validate_num_input('What is {} health? '.format(player_name))
@@ -29,15 +31,15 @@ def get_health():
             health_tracking[player_health] = [player_name]
     return(health_tracking)
 #code for sorting the list in numerical order
-def print_initiative(init_list):
+def print_initiative(thisinit):
     print('\nYour initiative order is: ')
-    for key in sorted (init_list, reverse=True):
-        print('{}: {}'.format(key, ', '.join(init_list[key])))
+    for key in sorted(thisinit, reverse=True):
+        print('{}: {}'.format(key, ', '.join(thisinit[key])))
 
 if __name__ == '__main__':
     init_list = get_initiative()
     print_initiative(init_list)
-    print(get_health())
+    print(get_health(init_list))
     
 
 while True:
