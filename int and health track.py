@@ -65,7 +65,7 @@ while True:
             pass
         #removes the player from the turn order
         elif turn_action.lower() == "l":
-            init_list.pop(player)
+            init_list.pop(key)
             break
     if init_list == "":
         break
