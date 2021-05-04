@@ -50,7 +50,7 @@ if __name__ == '__main__':
 while True:
     for key in sorted(init_list, reverse=True):
         print("It is", init_list[key], "'s turn.")
-        turn_action=input("press A to remove health, H to heal, S to skip turn, or L to leave combat. ")
+        turn_action=input("press A to change health, H to view health, S to skip turn, or L to leave combat. ")
         #removes from players health
         if turn_action.lower() == "a":
             print("you attacked")
@@ -68,6 +68,7 @@ while True:
             init_list.pop(key)
             break
     if init_list == "":
+        print("combat is concluded")
         break
     else:
         pass
