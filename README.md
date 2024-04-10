@@ -17,6 +17,5 @@
  Document progress and update project roadmap for next sprint.
 
  Team Members:
-
  Front-end Developer: [Christian Egboh]
  Back-end Developer: [Christian Egboh]
