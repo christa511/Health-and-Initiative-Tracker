@@ -1,6 +1,5 @@
 # Health-Tracker
   Project Roadmap:
-  Week 1 Tasks:
 
  Create project repository in ksu-is Github organization.
  Write project proposal and README.md using markdown.
