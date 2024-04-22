@@ -15,3 +15,8 @@ Turn Order Logic: Finalize the logic for turn order management, ensuring that pl
 Player Health Integration: Integrate player health tracking functionality into the application, allowing players to input and update their health values during gameplay.
 Testing and Debugging: Conduct thorough testing of the application to identify and resolve any bugs or issues. Test the functionality of initiative tracking, turn order management, and player health tracking to ensure they work as intended.
 Documentation and Roadmap Update: Document progress made during the week and update the project roadmap for the next sprint, outlining tasks and goals for future development.
+Team Members
+Project Lead: [Chritian Egboh]
+Front-end Developer: [Christian Egboh]
+Back-end Developer: [Christian Egboh]
+QA Tester: [Christian Egboh]
