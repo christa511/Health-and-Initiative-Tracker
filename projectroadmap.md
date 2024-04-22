@@ -1,9 +1,17 @@
-I found some code that does the basic initiative. It asks for name, and then inititiave. After pressing enter on the blank entry it spews out the names and initiatives in order.(done) 
-Its a good start, but i will need to modify it to ask for health as well, shouldn't be too hard. But i do think that it will be hard to link health with name.
-The code work pretty well. will need to work on pulling the names for turn order.(done)
+The project aims to develop a turn-based game or application that includes features such as initiative tracking, turn order management, and player health tracking. The initial focus is on implementing basic functionality for initiative tracking and turn order, with plans to expand the project to include player health tracking and other features in subsequent iterations.
 
-added turn functionality, but still need to add the ability to ask for player's health, 
 
-need to also figure out how to get the list appending right, comes up with numbers instead of the names.
+Tasks
+Implement Initiative Tracking: Develop functionality to input player names and initiative values, and display them in order of initiative.
+Turn Order Management: Add functionality to manage turn order based on initiative values, allowing players to take turns in the correct sequence.
+Player Health Tracking: Integrate player health tracking into the application, allowing players to input and update their health values as needed.
+Refinement and Testing: Refine the functionality of the application, addressing any bugs or issues that arise during testing. Ensure that all features work as intended and provide a smooth user experience.
+User Interface Enhancement: Improve the user interface to make it more intuitive and visually appealing. Consider adding graphics or animations to enhance the gaming experience.
 
-just tried to add health tracking, doesn't work like i want it to, will have to tweak it some more
+Week 2 Tasks
+
+Initiative Tracking Implementation: Complete the implementation of initiative tracking functionality, ensuring that player names and initiative values are captured accurately and displayed in the correct order.
+Turn Order Logic: Finalize the logic for turn order management, ensuring that players take turns in the correct sequence based on their initiative values.
+Player Health Integration: Integrate player health tracking functionality into the application, allowing players to input and update their health values during gameplay.
+Testing and Debugging: Conduct thorough testing of the application to identify and resolve any bugs or issues. Test the functionality of initiative tracking, turn order management, and player health tracking to ensure they work as intended.
+Documentation and Roadmap Update: Document progress made during the week and update the project roadmap for the next sprint, outlining tasks and goals for future development.
