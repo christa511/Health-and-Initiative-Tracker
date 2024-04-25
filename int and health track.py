@@ -1,74 +1,111 @@
-'''  
-This is code that will help a game master/dungeon master get the initiative and health of the players,
-put them all in correct initiative order, then help you go through the turns until combat is over.
+import datetime
 
-'''
+class Medication:
+    def __init__(self, name, dosage, schedule):
+        self.name = name
+        self.dosage = dosage
+        self.schedule = schedule
 
-def validate_num_input(user_input):
-    while True:
-        try:
-            num_input = int(input(user_input))
-            break
-        except ValueError:
-            print("Please enter a valid number. ")
-    return num_input
-#code for getting initaitive
-def get_initiative():
-    print('Welcome to Initiative Tracker!')
-    initiative_tracking = {}
-    for player_name in iter(lambda: input("What is the players name? "), ''):
-        player_initiative = validate_num_input('What is {} initiative? '.format(player_name))
-        if player_initiative in initiative_tracking:
-            initiative_tracking[player_initiative].append(player_name)
+    def __str__(self):
+        return f"{self.name}, Dosage: {self.dosage}, Schedule: {', '.join(self.schedule)}"
+
+class MedicationTracker:
+    def __init__(self):
+        self.medications = []
+
+    def add_medication(self, medication):
+        self.medications.append(medication)
+
+    def show_medications(self):
+        if not self.medications:
+            print("No medications added yet.")
         else:
-            initiative_tracking[player_initiative] = [player_name]
-    return(initiative_tracking)
-#code for getting health below
-def get_health(newinit):
-    initiative = newinit
-    health_tracking = {}
-    for item in initiative:
-        player_health = validate_num_input('What is {} health? '.format(initiative[item]))
-        if player_health in health_tracking:
-            health_tracking[player_health].append(item)
-        else:
-            health_tracking[player_health] = initiative[item]
-    return(health_tracking)
-#code for sorting the list in numerical order
-def print_initiative(thisinit):
-    print('\nYour initiative order is: ')
-    for key in sorted(thisinit, reverse=True):
-        print(thisinit[key])
+            print("Medications:")
+            for idx, med in enumerate(self.medications, 1):
+                print(f"{idx}. {med}")
 
-if __name__ == '__main__':
-    init_list = get_initiative()
-    print_initiative(init_list)
-    print(init_list)
-    print(get_health(init_list))
-    
+    def check_medication_schedule(self):
+        current_time = datetime.datetime.now().time()
+        for med in self.medications:
+            if current_time.strftime("%H:%M") in med.schedule:
+                print(f"It's time to take {med.name} ({med.dosage})")
 
-while True:
-    for key in sorted(init_list, reverse=True):
-        print("It is", init_list[key], "'s turn.")
-        turn_action=input("press A to change health, H to view health, S to skip turn, or L to leave combat. ")
-        #removes from players health
-        if turn_action.lower() == "a":
-            print("you attacked")
-            pass
-        #add to players health
-        elif turn_action.lower() == "h":
-            print("you healed")
-            pass
-        #skips the players turn
-        elif turn_action.lower() == "s":
-            print("you skipped your turn")
-            pass
-        #removes the player from the turn order
-        elif turn_action.lower() == "l":
-            init_list.pop(key)
-            break
-    if init_list == "":
-        print("combat is concluded")
-        break
-    else:
-        pass
+class HealthTrackerApp:
+    def __init__(self):
+        self.medication_tracker = MedicationTracker()
+        self.user_name = None
+        self.physical_activities = []
+        self.emergency_contacts = {}
+
+    def welcome_message(self):
+        print("Welcome to Health Tracker App for Seniors!")
+        print("1. Add Medication")
+        print("2. Show Medications")
+        print("3. Check Medication Schedule")
+        print("4. Track Physical Activity")
+        print("5. Emergency Assistance")
+        print("6. Personalized Health Tips")
+        print("7. Exit")
+
+    def get_user_name(self):
+        self.user_name = input("Please enter your name: ")
+
+    def track_physical_activity(self):
+        activity = input("Enter the physical activity performed: ")
+        duration = input("Enter the duration of the activity (in minutes): ")
+        self.physical_activities.append((activity, duration))
+        print("Physical activity tracked successfully.")
+
+    def add_emergency_contact(self):
+        name = input("Enter the name of the emergency contact: ")
+        phone = input("Enter the phone number of the emergency contact: ")
+        self.emergency_contacts[name] = phone
+        print("Emergency contact added successfully.")
+
+    def show_personalized_health_tips(self):
+        print(f"Hello, {self.user_name}! Here are some personalized health tips for you:")
+        # Implement personalized health tips based on user's profile or preferences
+
+    def main_menu(self):
+        while True:
+            self.welcome_message()
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                name = input("Enter medication name: ")
+                dosage = input("Enter dosage: ")
+                schedule = input("Enter schedule (HH:MM format, separate multiple times by comma): ").split(",")
+                medication = Medication(name, dosage, schedule)
+                self.medication_tracker.add_medication(medication)
+                print("Medication added successfully.")
+
+            elif choice == "2":
+                self.medication_tracker.show_medications()
+
+            elif choice == "3":
+                self.medication_tracker.check_medication_schedule()
+
+            elif choice == "4":
+                self.track_physical_activity()
+
+            elif choice == "5":
+                self.add_emergency_contact()
+
+            elif choice == "6":
+                self.show_personalized_health_tips()
+
+            elif choice == "7":
+                print("Exiting...")
+                break
+
+            else:
+                print("Invalid choice. Please try again.")
+
+def main():
+    app = HealthTrackerApp()
+    app.get_user_name()
+    app.main_menu()
+
+if __name__ == "__main__":
+    main()
+
