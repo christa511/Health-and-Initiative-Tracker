@@ -1,4 +1,5 @@
 import datetime
+import random
 
 class Medication:
     def __init__(self, name, dosage, schedule):
@@ -25,17 +26,18 @@ class MedicationTracker:
                 print(f"{idx}. {med}")
 
     def check_medication_schedule(self):
-        current_time = datetime.datetime.now().time()
+        current_time = datetime.datetime.now().strftime("%H:%M")
+        medications_to_take = []
         for med in self.medications:
-            if current_time.strftime("%H:%M") in med.schedule:
-                print(f"It's time to take {med.name} ({med.dosage})")
+            if current_time in med.schedule:
+                medications_to_take.append(med)
+        return medications_to_take
 
 class HealthTrackerApp:
     def __init__(self):
         self.medication_tracker = MedicationTracker()
         self.user_name = None
         self.physical_activities = []
-        self.emergency_contacts = {}
 
     def welcome_message(self):
         print("Welcome to Health Tracker App for Seniors!")
@@ -43,7 +45,7 @@ class HealthTrackerApp:
         print("2. Show Medications")
         print("3. Check Medication Schedule")
         print("4. Track Physical Activity")
-        print("5. Emergency Assistance")
+        print("5. Dial 911 (Emergency)")
         print("6. Personalized Health Tips")
         print("7. Exit")
 
@@ -56,15 +58,20 @@ class HealthTrackerApp:
         self.physical_activities.append((activity, duration))
         print("Physical activity tracked successfully.")
 
-    def add_emergency_contact(self):
-        name = input("Enter the name of the emergency contact: ")
-        phone = input("Enter the phone number of the emergency contact: ")
-        self.emergency_contacts[name] = phone
-        print("Emergency contact added successfully.")
+    def dial_emergency_contact(self):
+        print("Dialing 911 (Emergency)...")
+        # Add code to dial 911 here
 
     def show_personalized_health_tips(self):
-        print(f"Hello, {self.user_name}! Here are some personalized health tips for you:")
-        # Implement personalized health tips based on user's profile or preferences
+        health_tips = [
+            "Stay hydrated by drinking plenty of water throughout the day.",
+            "Get at least 30 minutes of moderate exercise daily to maintain a healthy lifestyle.",
+            "Incorporate a variety of colorful fruits and vegetables into your diet for optimal nutrition.",
+            "Remember to take short breaks and stretch if you spend long periods sitting.",
+            "Prioritize getting enough sleep each night to support overall health and well-being."
+        ]
+        tip = random.choice(health_tips)
+        print(f"Hello, {self.user_name}! Here's a personalized health tip for you:\n{tip}")
 
     def main_menu(self):
         while True:
@@ -83,13 +90,19 @@ class HealthTrackerApp:
                 self.medication_tracker.show_medications()
 
             elif choice == "3":
-                self.medication_tracker.check_medication_schedule()
+                medications_to_take = self.medication_tracker.check_medication_schedule()
+                if medications_to_take:
+                    print("It's time to take the following medications:")
+                    for med in medications_to_take:
+                        print(f"- {med.name} ({med.dosage})")
+                else:
+                    print("No medications scheduled at this time.")
 
             elif choice == "4":
                 self.track_physical_activity()
 
             elif choice == "5":
-                self.add_emergency_contact()
+                self.dial_emergency_contact()
 
             elif choice == "6":
                 self.show_personalized_health_tips()
